@@ -4,6 +4,8 @@ import { Currency, Token } from '@uniswap/sdk-core'
 import { SupportedChainId } from './chains'
 import {
   AMPL,
+  AMS_MAINNET,
+  AMS_ROPSTEN,
   CEUR_CELO,
   CEUR_CELO_ALFAJORES,
   CMC02_CELO,
@@ -116,6 +118,7 @@ export const CUSTOM_BASES: { [chainId: number]: { [tokenAddress: string]: Token[
 export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.MAINNET]: [
     nativeOnChain(SupportedChainId.MAINNET),
+    AMS_MAINNET,
     DAI,
     USDC_MAINNET,
     USDT,
@@ -124,6 +127,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   ],
   [SupportedChainId.ROPSTEN]: [
     nativeOnChain(SupportedChainId.ROPSTEN),
+    AMS_ROPSTEN,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.ROPSTEN] as Token,
   ],
   [SupportedChainId.RINKEBY]: [

@@ -4,6 +4,20 @@ import invariant from 'tiny-invariant'
 import { UNI_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
 
+export const AMS_MAINNET = new Token(
+  SupportedChainId.MAINNET,
+  '0x571b265d8f61cd71e6ce54569dae6adbb1c5ebb9',
+  18,
+  'AMS',
+  'amsterdreams'
+)
+export const AMS_ROPSTEN = new Token(
+  SupportedChainId.ROPSTEN,
+  '0x571b265d8f61cd71e6ce54569dae6adbb1c5ebb9',
+  18,
+  'AMS',
+  'amsterdreams'
+)
 export const USDC_MAINNET = new Token(
   SupportedChainId.MAINNET,
   '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
@@ -470,5 +484,9 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
     [SupportedChainId.KOVAN]: USDC_KOVAN.address,
     [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
+  },
+  AMS: {
+    [SupportedChainId.MAINNET]: AMS_MAINNET.address,
+    [SupportedChainId.ROPSTEN]: AMS_ROPSTEN.address,
   },
 }

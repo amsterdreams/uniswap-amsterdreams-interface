@@ -2,10 +2,10 @@ import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
 import { getChainInfoOrDefault } from 'constants/chainInfo'
-import { SupportedChainId } from 'constants/chains'
+//import { SupportedChainId } from 'constants/chains'
 import useTheme from 'hooks/useTheme'
 import { darken } from 'polished'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink /*, useLocation */ } from 'react-router-dom'
 import { Text } from 'rebass'
 import { useShowClaimPopup, useToggleSelfClaimModal } from 'state/application/hooks'
 import { useUserHasAvailableClaim } from 'state/claim/hooks'
@@ -14,6 +14,7 @@ import { useUserHasSubmittedClaim } from 'state/transactions/hooks'
 import { useDarkModeManager } from 'state/user/hooks'
 import styled from 'styled-components/macro'
 
+import { ReactComponent as AmsLogo } from '../../assets/svg/ams-coin-logo-vector.svg'
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg'
 import { ExternalLink, ThemedText } from '../../theme'
 import ClaimModal from '../claim/ClaimModal'
@@ -260,7 +261,7 @@ export default function Header() {
 
   const scrollY = useScrollPosition()
 
-  const { pathname } = useLocation()
+  // const { pathname } = useLocation()
 
   const {
     infoLink,
@@ -269,12 +270,12 @@ export default function Header() {
 
   // work around https://github.com/remix-run/react-router/issues/8161
   // as we can't pass function `({isActive}) => ''` to className with styled-components
-  const isPoolActive =
-    pathname.startsWith('/pool') ||
-    pathname.startsWith('/add') ||
-    pathname.startsWith('/remove') ||
-    pathname.startsWith('/increase') ||
-    pathname.startsWith('/find')
+  //const isPoolActive =
+  // pathname.startsWith('/pool') ||
+  // pathname.startsWith('/add') ||
+  // pathname.startsWith('/remove') ||
+  // pathname.startsWith('/increase') ||
+  // pathname.startsWith('/find')
 
   return (
     <HeaderFrame showBackground={scrollY > 45}>
@@ -284,24 +285,16 @@ export default function Header() {
           <Logo fill={darkMode ? deprecated_white : deprecated_black} width="24px" height="100%" title="logo" />
           <HolidayOrnament />
         </UniIcon>
+        <UniIcon>
+          <AmsLogo width="24px" height="100%" title="amsterdreams logo" />
+          <HolidayOrnament />
+        </UniIcon>
       </Title>
       <HeaderLinks>
+        <ThemedText.DeprecatedBodyNoLine>amsterdreams Uniswap</ThemedText.DeprecatedBodyNoLine>
         <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
           <Trans>Swap</Trans>
         </StyledNavLink>
-        <StyledNavLink
-          data-cy="pool-nav-link"
-          id={`pool-nav-link`}
-          to={'/pool'}
-          className={isPoolActive ? activeClassName : undefined}
-        >
-          <Trans>Pool</Trans>
-        </StyledNavLink>
-        {(!chainId || chainId === SupportedChainId.MAINNET) && (
-          <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
-            <Trans>Vote</Trans>
-          </StyledNavLink>
-        )}
         <StyledExternalLink id={`charts-nav-link`} href={infoLink}>
           <Trans>Charts</Trans>
           <sup>↗</sup>

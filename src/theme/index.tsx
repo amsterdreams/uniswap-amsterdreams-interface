@@ -297,6 +297,9 @@ export const ThemedText = {
   DeprecatedBody(props: TextProps) {
     return <TextWrapper fontWeight={400} fontSize={16} color={'deprecated_text1'} {...props} />
   },
+  DeprecatedBodyNoLine(props: TextProps) {
+    return <TextWrapper fontWeight={400} margin={20} fontSize={16} color={'deprecated_text1'} {...props} />
+  },
   DeprecatedLargeHeader(props: TextProps) {
     return <TextWrapper fontWeight={600} fontSize={24} {...props} />
   },
